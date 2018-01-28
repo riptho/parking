@@ -1,0 +1,106 @@
+    <html>
+	<!-- 
+	All of this code is super fucking lazy and I literally explain 
+	the entire algorithm in the video but thanks for checking it out anyway.
+	-->
+	<style>
+h3 {
+padding:0;
+margin:0;
+}
+pre {
+padding:0;
+margin:0;
+}
+p {
+padding:0;
+margin:0;
+}
+
+</style>
+	<!-- <pre>
+	
+	
+	
+  █████▒█    ██  ▄████▄   ██ ▄█▀    ██▓███   ▄▄▄     ▓██   ██▓ ██▓ ███▄    █   ▄████ 
+▓██   ▒ ██  ▓██▒▒██▀ ▀█   ██▄█▒    ▓██░  ██▒▒████▄    ▒██  ██▒▓██▒ ██ ▀█   █  ██▒ ▀█▒
+▒████ ░▓██  ▒██░▒▓█    ▄ ▓███▄░    ▓██░ ██▓▒▒██  ▀█▄   ▒██ ██░▒██▒▓██  ▀█ ██▒▒██░▄▄▄░
+░▓█▒  ░▓▓█  ░██░▒▓▓▄ ▄██▒▓██ █▄    ▒██▄█▓▒ ▒░██▄▄▄▄██  ░ ▐██▓░░██░▓██▒  ▐▌██▒░▓█  ██▓
+░▒█░   ▒▒█████▓ ▒ ▓███▀ ░▒██▒ █▄   ▒██▒ ░  ░ ▓█   ▓██▒ ░ ██▒▓░░██░▒██░   ▓██░░▒▓███▀▒
+ ▒ ░   ░▒▓▒ ▒ ▒ ░ ░▒ ▒  ░▒ ▒▒ ▓▒   ▒▓▒░ ░  ░ ▒▒   ▓▒█░  ██▒▒▒ ░▓  ░ ▒░   ▒ ▒  ░▒   ▒ 
+ ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░   ░▒ ░       ▒   ▒▒ ░▓██ ░▒░  ▒ ░░ ░░   ░ ▒░  ░   ░ 
+ ░ ░    ░░░ ░ ░ ░        ░ ░░ ░    ░░         ░   ▒   ▒ ▒ ░░   ▒ ░   ░   ░ ░ ░ ░   ░ 
+          ░     ░ ░      ░  ░                     ░  ░░ ░      ░           ░       ░ 
+                ░                                     ░ ░                            
+
+  █████▒▒█████   ██▀███      ██▓███   ▄▄▄       ██▀███   ██ ▄█▀ ██▓ ███▄    █   ▄████ 
+▓██   ▒▒██▒  ██▒▓██ ▒ ██▒   ▓██░  ██▒▒████▄    ▓██ ▒ ██▒ ██▄█▒ ▓██▒ ██ ▀█   █  ██▒ ▀█▒
+▒████ ░▒██░  ██▒▓██ ░▄█ ▒   ▓██░ ██▓▒▒██  ▀█▄  ▓██ ░▄█ ▒▓███▄░ ▒██▒▓██  ▀█ ██▒▒██░▄▄▄░
+░▓█▒  ░▒██   ██░▒██▀▀█▄     ▒██▄█▓▒ ▒░██▄▄▄▄██ ▒██▀▀█▄  ▓██ █▄ ░██░▓██▒  ▐▌██▒░▓█  ██▓
+░▒█░   ░ ████▓▒░░██▓ ▒██▒   ▒██▒ ░  ░ ▓█   ▓██▒░██▓ ▒██▒▒██▒ █▄░██░▒██░   ▓██░░▒▓███▀▒
+ ▒ ░   ░ ▒░▒░▒░ ░ ▒▓ ░▒▓░   ▒▓▒░ ░  ░ ▒▒   ▓▒█░░ ▒▓ ░▒▓░▒ ▒▒ ▓▒░▓  ░ ▒░   ▒ ▒  ░▒   ▒ 
+ ░       ░ ▒ ▒░   ░▒ ░ ▒░   ░▒ ░       ▒   ▒▒ ░  ░▒ ░ ▒░░ ░▒ ▒░ ▒ ░░ ░░   ░ ▒░  ░   ░ 
+ ░ ░   ░ ░ ░ ▒    ░░   ░    ░░         ░   ▒     ░░   ░ ░ ░░ ░  ▒ ░   ░   ░ ░ ░ ░   ░ 
+           ░ ░     ░                       ░  ░   ░     ░  ░    ░           ░       ░ 
+                                                                                      
+</pre>
+
+-->
+  <body>
+    <form>
+<h3> According to your device, todays date is:</h3>
+<p id="deviceDate"></p>
+<br>
+<h3> If this is correct press 'Get Barcode' below </h3>
+<sub> please note this only works for 90 minutes of free parking</sub>
+<br>
+<sub> if someone can get their hands on alternative 'all day' barcodes I will ammend this script</sub>
+
+<br>
+	<input type="button" id="btn" value="Get Barcode" />
+	<input type="button" value="Clear Barcode" onClick="window.location.reload()">
+    </form>
+
+	
+    <script type="text/javascript">
+	
+	
+	document.getElementById("deviceDate").innerHTML = Date();
+	
+      document.getElementById('btn').onclick = function() {
+        
+			var today = new Date();
+			var day = today.getDate();
+			var month = today.getMonth()+1;
+			var year = today.getFullYear();
+
+			if(day<10) {
+				day = '0'+day
+			} 
+
+			if(month<10) {
+				month = '0'+month
+			} 
+		
+			
+        yr = (year - 2000);
+		
+        var dayplus = +day + 1;
+  
+  if (dayplus < 10)
+        {
+          var dayplusedit = dayplus.toString();
+          dayplusedit = '0' + dayplusedit
+          dayplus = dayplusedit
+        }
+
+        src = 'http://www.barcodes4.me/barcode/c128b/88' + yr + month + dayplus + '.png',
+          img = document.createElement('img');
+
+        img.src = src;
+        document.body.appendChild(img);
+      }
+
+	  
+    </script>
+
